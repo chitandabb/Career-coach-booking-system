@@ -21,6 +21,7 @@ public class WebhookController {
     @PostMapping("/cal")
     public void handleCalWebhook(@RequestBody CalWebhookDTO dto) {
         log.info(dto.getTriggerEvent());
+        log.info(dto.toString());
         bookingService.handleWebhookEvent(dto);
     }
 }

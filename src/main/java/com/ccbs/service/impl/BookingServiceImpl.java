@@ -61,7 +61,7 @@ public class BookingServiceImpl implements BookingService {
     public void handleWebhookEvent(CalWebhookDTO event) {
         switch (event.getTriggerEvent()){
             case "BOOKING_CREATED" -> onBookingCreated(event);
-            case "BOOKING_CANCELED" -> onBookingCanceled(event);
+            case "BOOKING_CANCELLED" -> onBookingCanceled(event);
         }
     }
 

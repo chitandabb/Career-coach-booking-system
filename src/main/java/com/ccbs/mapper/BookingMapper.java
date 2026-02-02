@@ -23,5 +23,5 @@ public interface BookingMapper {
     String selectEmailByBookingUid(@Param("calBookingUid") String calBookingUid);
 
     @Update("UPDATE bookings SET status = 'BOOKING_CANCELED' WHERE cal_booking_uid = #{calBookingUid}")
-    void update(String calBookingUid);
+    void update(@Param("calBookingUid") String calBookingUid);
 }
