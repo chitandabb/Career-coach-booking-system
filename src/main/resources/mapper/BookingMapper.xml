@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbs.mapper.BookingMapper">
+
+    <insert id="insert">
+            insert into bookings
+                (user_id, coach_email, coach_name, start_time, end_time, status,
+                 cal_booking_uid, created_at, updated_at)
+            values
+                (#{userId}, #{coachEmail}, #{coachName}, #{startTime}, #{endTime}, #{status},
+                 #{calBookingUid}, #{createdAt}, #{updatedAt})
+    </insert>
+    <select id="selectEmailByBookingUid" resultType="java.lang.String">
+        select u.email
+        from bookings b
+                 join users u on u.user_id = b.user_id
+        where b.cal_booking_uid = #{calBookingUid}
+    </select>
+</mapper>

@@ -1,13 +1,40 @@
 spring:
   application:
     name: ccbs
+  #数据源配置
   datasource:
     url: jdbc:mysql://localhost:3306/career_coach?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
     username: root
-    password: ${MYSQL_PASSWORD}
+    password: Chitanda1211
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+#Mybatis配置
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.ccbs.entity
   configuration:
     map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#cal.com配置
+cal:
+  username: tanda-chi-adfhn7
+  event-type-slug: career-coaching-session
+
+
+#日志配置
+logging:
+  level:
+    root: info
+    com.ccbs: debug
+    org.springframework.web: info
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %highlight(%-5level) - %msg%n"
+  file:
+    name: logs/ccbs.log

@@ -32,10 +32,6 @@ build/
 
 ### VS Code ###
 .vscode/
-
-#环境变量
-src/main/resources/.env
-
 #日志文件
 logs/
 *.log
